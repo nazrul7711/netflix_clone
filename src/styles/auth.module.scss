@@ -1,0 +1,63 @@
+@import "variables";
+@mixin respondTo($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+
+  color: $white-color;
+  position: relative;
+
+  background-image: linear-gradient(
+      to bottom,
+      rgb(0, 0, 0, 0.7),
+      transparent 120%
+    ),
+    url("../../public/images/netflix2.jpeg");
+  background-size: cover;
+  .logo {
+    margin-left: 1rem;
+    @include respondTo(900px) {
+      position: absolute;
+      top: 1%;
+      left: 1%;
+    }
+  }
+  .login {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 31vw;
+    min-height: 50vh;
+    padding: calc(20px + 1.5vw);
+    margin: 0 auto;
+    background-color: $black-color;
+    button {
+      width: 100%;
+      padding: 1rem;
+      border-radius: $border-radius;
+      border: none;
+      background-color: $red-color;
+      color: $white-color;
+      font-size: 1.2rem;
+    }
+    p{
+      color: $grey-color;
+      span{
+        color:$white-color;
+        &:hover{
+          border-bottom: 1px solid $white-color;
+          cursor: pointer;
+        }
+      }
+    }
+    @include respondTo(900px) {
+      padding-top: 10rem;
+      min-width: 100vw;
+      min-height: 100vh;
+    }
+  }
+}

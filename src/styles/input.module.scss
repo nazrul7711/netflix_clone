@@ -1,0 +1,31 @@
+@import "variables";
+
+.input {
+  position: relative;
+  margin-bottom: 1rem;
+  input {
+    padding: 1.2em 2em;
+    width: 100%;
+    border-radius: $border-radius;
+    outline: none;
+    border: none;
+    color: $white-color;
+    background-color: scale-color($grey-color, $blackness: 95%);
+
+    &:is(:focus, :valid) {
+      padding: 1.2rem 1rem 0.8rem;
+    }
+    &:is(:focus, :valid) + label {
+      font-size: 0.75rem;
+      transform: translateY(-60%);
+    }
+  }
+  label {
+    position: absolute;
+    top: 0.7rem;
+    left: 1rem;
+    color: scale-color($grey-color, $lightness: 65%);
+    letter-spacing: 0.08em;
+    transition: all 0.1s ease;
+  }
+}

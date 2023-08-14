@@ -7,6 +7,9 @@ import styles from '@/styles/Home.module.scss'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  function add(a:number,b:number){
+    return a+b;
+  }
   
   return (
     <>
@@ -28,4 +31,5 @@ export default function Home() {
 //npx prisma init scheme fil ?
 //npm install @prisma/client
 //lib >prismadb.ts
+//npm install next-auth and bcrypt
 

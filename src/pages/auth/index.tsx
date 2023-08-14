@@ -5,9 +5,8 @@ import Input from "@/components/Input";
 
 const index = () => {
   const [signUp, setSignUp] = useState<boolean>(true);
-  useEffect(()=>{
-    globalThis.alert("kill bill")
-  },[])
+
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.logo}>

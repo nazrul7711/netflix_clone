@@ -1,11 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import styles from "@/styles/auth.module.scss";
 import Image from "next/image";
+import axios from "axios";
 import Input from "@/components/Input";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 const index = () => {
   const [signUp, setSignUp] = useState<boolean>(true);
+  const [name, setName] = useState<string>();
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
+  const [error, setError] = useState<string>();
+  let router = useRouter();
 
+  const registerHandler = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      await axios.post("/api/register", {
+        email,
+        name,
+        password,
+      });
+      loginHandler(e);
+    } catch (error: any) {
+      console.log(error);
+      setError(error.response.data.msg);
+    }
+  };
+  const loginHandler = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: "/",
+      });
+      router.push("/");
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -19,31 +57,49 @@ const index = () => {
       </div>
       <div className={styles.login}>
         <h1>Sign In</h1>
-        <form>
+        <form onSubmit={signUp ? registerHandler : loginHandler}>
           {signUp && (
             <Input
               id="Username"
               label="Username"
               type="text"
-              value=""
-              onChange={() => {}}
+              value={name}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setName(e.target.value);
+              }}
             />
           )}
           <Input
             id="Email"
-            label="email"
+            label="Email"
             type="email"
-            value=""
-            onChange={() => {}}
+            value={email}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              setEmail(e.target.value);
+            }}
           />
           <Input
             id="Password"
-            label="password"
+            label="Password"
             type="password"
-            value=""
-            onChange={() => {}}
+            value={password}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              setPassword(e.target.value);
+            }}
           />
-          <button>{signUp ?"Sign Up":"Login"}</button>
+          <button>{signUp ? "Sign Up" : "Login"}</button>
+          <div className={styles.gitButtons}>
+            <div className={styles.gitButton}>
+              <FcGoogle />
+            </div>
+
+            <div
+              className={styles.gitButton}
+              onClick={() => signIn("github", { callbackUrl: "/" })}
+            >
+              <FaGithub />
+            </div>
+          </div>
         </form>
         <p>
           {!signUp && "New to Netflix?"}
@@ -51,6 +107,7 @@ const index = () => {
             {signUp ? "Login" : "Sign Up Now"}
           </span>
         </p>
+        {error && <p>{error}</p>}
       </div>
     </div>
   );

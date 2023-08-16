@@ -20,7 +20,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-          
+            <h1>hello world</h1>
       </main>
     </>
   )
@@ -31,5 +31,11 @@ export default function Home() {
 //npx prisma init scheme fil ?
 //npm install @prisma/client
 //lib >prismadb.ts
-//npm install next-auth and bcrypt
+//npm install next-auth and bcrypt and @types/bcrypt
+//then we export default NextAuth({providers:[Credentials({id:,name:,credentials:{email:{}}})]}) 
+//async authorize(credentials) 
+//what will u do if there is no credentials.email or password
+// if u have email check if there exist a user with this email
+//if password matches the one in record
+
 

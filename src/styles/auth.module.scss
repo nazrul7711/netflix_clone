@@ -43,6 +43,7 @@
       background-color: $red-color;
       color: $white-color;
       font-size: 1.2rem;
+      cursor:pointer
     }
     p{
       color: $grey-color;
@@ -58,6 +59,23 @@
       padding-top: 10rem;
       min-width: 100vw;
       min-height: 100vh;
+    }
+    .gitButtons{
+      display: flex;
+      min-width: 4rem;
+      justify-content: space-around;
+      padding: .5rem 3rem;
+      margin-top: 1rem;
+      .gitButton{
+        height: 2rem;
+        width: 2rem;
+        background-color: $white-color;
+        border-radius: 50%;
+        display: grid;
+        place-content: center;
+        color: black;
+        cursor: pointer;
+      }
     }
   }
 }

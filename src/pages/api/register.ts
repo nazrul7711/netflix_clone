@@ -9,7 +9,7 @@ const handler: NextApiHandler = async (
 
   try{
     if (req.method !== "POST") {
-      res.status(400).json({msg:"its not a post request"})
+      return res.status(400).json({msg:"its not a post request"})
     }
     let {email,name,password} = req.body
     let existingEmail = await prismadb.user.findUnique({
@@ -18,7 +18,7 @@ const handler: NextApiHandler = async (
       }
     })
     if(existingEmail){
-      res.status(409).json({ msg: "User with this email already exist" });
+      return res.status(409).json({ msg: "User with this email already exist" });
     }
     let hashedPassword = await bcrypt.hash(password,12)
     let newUser = await prismadb.user.create({
@@ -31,11 +31,11 @@ const handler: NextApiHandler = async (
 
       }
     })
-    res.status(200).json({user:newUser});
+    return res.status(200).json({user:newUser});
   }
   catch(error:any){
     console.log(error)
-    res.status(400).json({msg:error.message})
+    return res.status(400).json({msg:error.message})
   }
   
 };

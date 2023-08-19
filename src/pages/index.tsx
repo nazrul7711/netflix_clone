@@ -2,15 +2,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.scss'
-// import { addTwo } from '../../global'
+import Navbar from '@/components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  function add(a:number,b:number){
-    return a+b;
-  }
-  
+
+
   return (
     <>
       <Head>
@@ -20,10 +18,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-            <h1>hello world</h1>
+        <Navbar/>
+
       </main>
     </>
-  )
+  );
 }
 
 //install prisma in vs code
@@ -39,3 +38,53 @@ export default function Home() {
 //if password matches the one in record
 
 
+
+
+//o auth open authorisation->give third party limited access to the api like google or github
+//google authorisation server, 3rd party api requests some toke from this server,3rd party uses this token to access the api
+//it is authorisation
+//i have to get a id and a key from api where i register the application
+// so when application makes request it gives the id and key 
+
+
+
+/*
+SESSION it is some data stored on server.
+like for this data a id is given to the client and if he wants email from the data he can use this id
+
+cookies session and local storage are all stored in browser
+cookies 4kb
+local and session 10mb
+cookies available in all tabs not session
+session storage only for session if he logs out its gone
+cookies are sent with all requests
+
+*/
+
+/*
+useSWR from swr 
+this is normally for fetching data
+
+const fetcher = (url)=>axios.get(url).then(res=>res.data)
+const {data,error} = useSWR(key,fetcher)
+
+data is undefined if no data
+
+
+
+
+
+*/
+/*
+FLOW
+LIB
+SERVERAUTH i wrote logic if the session data is stored then get the email and see if we have user with this email if no user then throw error and return user
+
+FETCHER 
+
+HOOKS
+we have defined like useCurrent here we use useSwr and return data,error,isLoading,mutate
+
+
+
+*/

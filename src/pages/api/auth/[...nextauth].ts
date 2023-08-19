@@ -13,9 +13,10 @@ export default NextAuth({
       clientSecret: process.env.GITHUB_SECRET || "",
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID || "",
-      clientSecret: process.env.GOOGLE_SECRET || "",
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     }),
+
     Credentials({
       credentials: {
         email: {
@@ -64,4 +65,3 @@ export default NextAuth({
 
 // useSession,signout from next-auth/client/
 //session token
-

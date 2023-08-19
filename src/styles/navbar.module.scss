@@ -1,0 +1,54 @@
+.navbar {
+  height: 5rem;
+  @mixin applyMediaQuery($size) {
+    @media (max-width: $size) {
+      @content;
+    }
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  .leftNavbar {
+    display: flex;
+    align-items: center;
+    min-width: 60%;
+    justify-content: space-around;
+  }
+  .navItems {
+    min-width: 40rem;
+    display: flex;
+    justify-content: space-around;
+    line-height: 2rem;
+  }
+  .profileTab {
+    display: flex;
+    min-width: 15rem;
+    justify-content: space-around;
+    align-items: center;
+  }
+  @include applyMediaQuery(800px) {
+    .navbar {
+      position: relative;
+    }
+    .profileTab {
+      display: none;
+    }
+    .leftNavbar {
+      display: flex;
+      min-width: 20rem;
+      justify-content: space-between;
+    }
+
+    .navItems {
+      position: absolute;
+      left: 25%;
+      top: 5%;
+      display: flex;
+      flex-direction: column;
+    }
+    .navItems.hidden {
+      display: none;
+    }
+  }
+}

@@ -88,18 +88,23 @@ const index = () => {
             }}
           />
           <button>{signUp ? "Sign Up" : "Login"}</button>
-          <div className={styles.gitButtons}>
-            <div className={styles.gitButton}>
-              <FcGoogle />
-            </div>
+          {
+            !signUp  && <div className={styles.gitButtons}>
+              <div
+                className={styles.gitButton}
+                onClick={() => signIn("google", { callbackUrl: "/" })}
+              >
+                <FcGoogle />
+              </div>
 
-            <div
-              className={styles.gitButton}
-              onClick={() => signIn("github", { callbackUrl: "/" })}
-            >
-              <FaGithub />
+              <div
+                className={styles.gitButton}
+                onClick={() => signIn("github", { callbackUrl: "/" })}
+              >
+                <FaGithub />
+              </div>
             </div>
-          </div>
+          }
         </form>
         <p>
           {!signUp && "New to Netflix?"}

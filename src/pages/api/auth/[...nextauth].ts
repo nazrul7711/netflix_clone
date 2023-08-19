@@ -5,23 +5,24 @@ import { compare } from "bcrypt";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { NextAuthOptions } from "next-auth";
+import Google from "next-auth/providers/google";
 
-export default NextAuth({
+export const nextAuthOptions: NextAuthOptions = {
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_ID || "",
-      clientSecret: process.env.GITHUB_SECRET || "",
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-
     Credentials({
       credentials: {
         email: {
           label: "Email",
-          type: "text",
+          type: "email",
         },
         password: {
           label: "Password",
@@ -30,38 +31,33 @@ export default NextAuth({
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("Email and password is required");
+          throw new Error("email and password both required");
         }
-        const user = await prismadb.user.findUnique({
+        let existingUser = await prismadb.user.findUnique({
           where: {
-            email: credentials.email,
+            email: credentials?.email,
           },
         });
-        if (!user || !user.hashedPassword) {
-          throw new Error("email does not exist");
+        if (!existingUser || !existingUser.hashedPassword) {
+          throw new Error("No user with this email or password is missing");
         }
-        const isCorrectPassword = await compare(
-          credentials.password,
-          user.hashedPassword
+        let ifCorrectPassword = await compare(
+          credentials?.password,
+          existingUser?.hashedPassword
         );
-        if (!isCorrectPassword) {
-          throw new Error("Incorrect Password");
+        if (!ifCorrectPassword) {
+          throw new Error("password does not match");
         }
-        return user;
+        return existingUser;
       },
     }),
   ],
   pages: { signIn: "/auth" },
   debug: process.env.NODE_ENV === "development",
-  adapter: PrismaAdapter(prismadb),
   session: {
     strategy: "jwt",
   },
-  jwt: {
-    secret: process.env.NEXTAUTH_JWT_SECRET,
-  },
-  secret: process.env.NEXTAUTH_SECRET,
-});
+};
 
-// useSession,signout from next-auth/client/
-//session token
+export default NextAuth(nextAuthOptions);
+

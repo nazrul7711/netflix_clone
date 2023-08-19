@@ -4,6 +4,8 @@ import styles from "@/styles/navbar.module.scss";
 import NavItem from "./NavItem";
 import { AiOutlineSearch, AiOutlineBell, AiOutlineDown } from "react-icons/Ai";
 
+
+
 const Navbar = () => {
   const [width, setWidth] = useState<number>(1440);
   const [show, setShow] = useState<boolean>(false);
@@ -20,7 +22,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={styles.navbar}>
+    <div className={`${styles.navbar} ${styles.styleFromParent}`}>
       <div className={styles.leftNavbar}>
         <div className={styles.logo}>
           <Image
@@ -46,10 +48,10 @@ const Navbar = () => {
       </div>
       <div className={styles.profileTab}>
         <div>
-          <AiOutlineSearch />
+          <AiOutlineSearch size={30} />
         </div>
         <div>
-          <AiOutlineBell />
+          <AiOutlineBell size={30} />
         </div>
         <div>
           <Image

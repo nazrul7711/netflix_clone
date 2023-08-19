@@ -1,5 +1,9 @@
-
-.main{
+.main {
   height: auto;
   width: 100%;
+  position: relative;
+}
+.navbar {
+  position: absolute;
+  background-color: antiquewhite;
 }

@@ -1,0 +1,50 @@
+@import "variables";
+.wrapper{
+  min-height:60vh;
+  min-width: 100vw;
+  position: relative;
+}
+.video{
+  height:100%;
+  width:100%;
+
+}
+.movieDetails{
+  position:absolute;
+  width: 60%;
+  top: 30%;
+  left: 10%;
+  color: $white-color;
+  letter-spacing: .2rem;
+  .title{
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .description{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  button{
+    
+    padding: .8rem 1.2rem;
+    border: none;
+    outline: none;
+    border-radius: .2rem;
+    background-color: rgb(255, 255, 255,.5);
+    color: $white-color;
+    cursor: pointer;
+    font-size: 1rem;  
+    display: flex;
+    justify-content: center;
+
+
+    div{
+      display: inline-block;
+      margin-right: .4rem;
+      
+    }
+    
+
+  }
+}

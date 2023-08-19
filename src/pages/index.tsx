@@ -1,13 +1,31 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.scss'
 import Navbar from '@/components/Navbar'
+import RandomVideo from '@/components/RandomVideo'
+import { getSession, useSession } from 'next-auth/react'
+import { GetServerSidePropsContext } from 'next'
+import PopularMovies from '@/components/PopularMovies'
 
 const inter = Inter({ subsets: ['latin'] })
+export  async function getServerSideProps(context:GetServerSidePropsContext) {
+  let a = await getSession();
+  console.log(a);
+  return{
+    props:{
 
-export default function Home() {
+    }
+  }
+}
+async function hello(){
+  let a = await getSession();
+    console.log(a)
+}
 
+export default  function Home() {
+
+  
+  
 
   return (
     <>
@@ -18,7 +36,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <Navbar/>
+        <Navbar />
+        <RandomVideo/>
+        <PopularMovies/>
+
+
 
       </main>
     </>
@@ -87,4 +109,15 @@ we have defined like useCurrent here we use useSwr and return data,error,isLoadi
 
 
 
+*/
+/*
+when a request is sent to say localhost/about the request is sent to page and when sent to api route localhost/api/currentuser it sent to that api route
+
+getSession works on client side and server u have to use getServerSession
+
+useSession built on top of getSession and is use only on client side it gives us data ,status and a update function
+
+getSession gives similiar data but not function for getSession we have to use async keyword
+
+allways use path.join(process.cwd() ,"filename") to read file in node
 */

@@ -6,6 +6,7 @@ import RandomVideo from '@/components/RandomVideo'
 import { getSession, useSession } from 'next-auth/react'
 import { GetServerSidePropsContext } from 'next'
 import PopularMovies from '@/components/PopularMovies'
+import MyList from '@/components/MyList'
 
 const inter = Inter({ subsets: ['latin'] })
 export  async function getServerSideProps(context:GetServerSidePropsContext) {
@@ -39,6 +40,7 @@ export default  function Home() {
         <Navbar />
         <RandomVideo/>
         <PopularMovies/>
+        <MyList/>
 
 
 

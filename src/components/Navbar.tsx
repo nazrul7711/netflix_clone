@@ -3,8 +3,7 @@ import Image from "next/image";
 import styles from "@/styles/navbar.module.scss";
 import NavItem from "./NavItem";
 import { AiOutlineSearch, AiOutlineBell, AiOutlineDown } from "react-icons/Ai";
-
-
+import { signOut } from "next-auth/react";
 
 const Navbar = () => {
   const [width, setWidth] = useState<number>(1440);
@@ -20,6 +19,9 @@ const Navbar = () => {
     window.addEventListener("resize", screenWidth);
     return () => window.removeEventListener("resize", screenWidth);
   }, []);
+  async function dropdownHandler() {
+    await signOut({ callbackUrl: "/auth" });
+  }
 
   return (
     <div className={`${styles.navbar} ${styles.styleFromParent}`}>
@@ -53,7 +55,7 @@ const Navbar = () => {
         <div>
           <AiOutlineBell size={30} />
         </div>
-        <div>
+        <div onClick={dropdownHandler}>
           <Image
             src={"/images/download.png"}
             alt={"profile"}

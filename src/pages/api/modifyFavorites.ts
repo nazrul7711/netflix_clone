@@ -27,7 +27,7 @@ export default async function handler(
         },
       },
     });
-    console.log(existingMovie);
+
     if (existingMovie.length > 0) {
       return res.status(409).json({ msg: "movie already added" });
     }

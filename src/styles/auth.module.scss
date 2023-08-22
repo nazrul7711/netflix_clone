@@ -4,6 +4,9 @@
     @content;
   }
 }
+.errorMsg {
+  color: $white-color;
+}
 .wrapper {
   height: 100vh;
   width: 100vw;
@@ -26,6 +29,7 @@
       left: 1%;
     }
   }
+
   .login {
     display: flex;
     flex-direction: column;
@@ -43,13 +47,13 @@
       background-color: $red-color;
       color: $white-color;
       font-size: 1.2rem;
-      cursor:pointer
+      cursor: pointer;
     }
-    p{
+    p {
       color: $grey-color;
-      span{
-        color:$white-color;
-        &:hover{
+      span {
+        color: $white-color;
+        &:hover {
           border-bottom: 1px solid $white-color;
           cursor: pointer;
         }
@@ -60,13 +64,14 @@
       min-width: 100vw;
       min-height: 100vh;
     }
-    .gitButtons{
+
+    .gitButtons {
       display: flex;
       min-width: 4rem;
       justify-content: space-around;
-      padding: .5rem 3rem;
+      padding: 0.5rem 3rem;
       margin-top: 1rem;
-      .gitButton{
+      .gitButton {
         height: 2rem;
         width: 2rem;
         background-color: $white-color;

@@ -12,11 +12,11 @@ export default async function handler(
       return res.status(403).json({ msg: "user is not logged in" });
     }
     let movieId = req.query.movieId
-    let foundMovie = await prismadb.movie.findUnique({
-      where:{
-        id:movieId
-      }
-    })
+    // let foundMovie = await prismadb.movie.findUnique({
+    //   where:{
+    //     id:movieId
+    //   }
+    // })
     const updatedUser = await prismadb.user.update({
       where:{
         email:user.email
@@ -27,7 +27,7 @@ export default async function handler(
         }
       }
     })
-    return res.status(200).json({ msg: movieList });
+    // return res.status(200).json({ msg: movieList });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ msg: "sth went wrong" });

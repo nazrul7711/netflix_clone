@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import serverAuth from "@/lib/serverAuth";
-import { getServerSession } from "next-auth";
-import { nextAuthOptions } from "./auth/[...nextauth]";
+
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "GET") {

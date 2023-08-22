@@ -4,11 +4,10 @@ import prismadb from "@/lib/prismadb";
 import { compare } from "bcrypt";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { NextAuthOptions } from "next-auth";
-import Google from "next-auth/providers/google";
 
-export const nextAuthOptions: NextAuthOptions = {
+
+export const nextAuthO: NextAuthOptions = {
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID!,
@@ -19,6 +18,7 @@ export const nextAuthOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
     Credentials({
+      name:"janki",
       credentials: {
         email: {
           label: "Email",
@@ -30,6 +30,7 @@ export const nextAuthOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
+
         if (!credentials?.email || !credentials?.password) {
           throw new Error("email and password both required");
         }
@@ -59,4 +60,21 @@ export const nextAuthOptions: NextAuthOptions = {
   },
 };
 
-export default NextAuth(nextAuthOptions);
+export default NextAuth(nextAuthO);
+
+
+/*
+NEXTAUTH_URL PROD
+NEXTAUTH_SECRET encrypt JWT
+secret: encrypt cookies generate cruptic keys yes in production a string value  PROD
+session:OPTIONAL to strategy :"jwt"
+jwt:OPTIONAL to define seperate configuration for jwt
+pages:{signIn:"/auth"}
+in req:callback-url,session-token,csrftoken
+getToken({req})
+
+import CredentialsProvider from "next-auth/provider/credentials"
+CredentaislProvider({name:"name to be provided in sign in form",credentails:{name:{label:,type},email:{ }}})
+
+
+*/

@@ -32,18 +32,27 @@ const index = () => {
   };
   const loginHandler = async (e: FormEvent) => {
     e.preventDefault();
-    try {
-      await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-        callbackUrl: "/",
-      });
+
+    let res = await signIn("credentials", {
+      email,
+      password,
+      redirect: false, //if true on sign in fail it will take me to /auth page mentioned in sign in . if false it will not take u anywhere if sign in is successfull
+      callbackUrl: "/", //this means to redirect user to a link where he want to go
+    });
+    console.log(res)
+    if (res?.ok) {
       router.push("/");
-    } catch (error: any) {
-      console.log(error);
+    }else{
+      setError(res?.error!)
     }
   };
+
+  /*signIn client-side yes
+  if only signIn() will be redirected to signIn page if u want to go to google sign in page use signIn("google") 
+  callbackUrl:which url user will be redirected to after sign in
+  redirect :false means in case of error user will stay here
+  signIn() will then resolve to a object { error:string or undefined,status : code like 200,ok boolean,url null or url}
+  */
 
   return (
     <div className={styles.wrapper}>
@@ -88,8 +97,8 @@ const index = () => {
             }}
           />
           <button>{signUp ? "Sign Up" : "Login"}</button>
-          {
-            !signUp  && <div className={styles.gitButtons}>
+          {!signUp && (
+            <div className={styles.gitButtons}>
               <div
                 className={styles.gitButton}
                 onClick={() => signIn("google", { callbackUrl: "/" })}
@@ -104,7 +113,7 @@ const index = () => {
                 <FaGithub />
               </div>
             </div>
-          }
+          )}
         </form>
         <p>
           {!signUp && "New to Netflix?"}
@@ -112,7 +121,7 @@ const index = () => {
             {signUp ? "Login" : "Sign Up Now"}
           </span>
         </p>
-        {error && <p>{error}</p>}
+        {error && <p className={styles.errorMsg}>{error}</p>}
       </div>
     </div>
   );

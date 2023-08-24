@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { AiOutlinePlus, AiOutlinePlayCircle } from "react-icons/Ai";
 import { TiTickOutline } from "react-icons/Ti";
 import { BsFillPlayCircleFill } from "react-icons/Bs";
@@ -6,6 +6,8 @@ import styles from "@/styles/movieTrailer.module.scss";
 import { useRef } from "react";
 import axios from "axios";
 import useFavoriteMovies from "@/hooks/useFavoriteMovies";
+import useSwr from "swr";
+import fetcher from "@/lib/fetcher";
 
 interface MovieTrailerProp {
   videoUrl: string;
@@ -19,38 +21,17 @@ const MovieTrailer = ({ videoUrl, img, id, myList }: MovieTrailerProp) => {
   const [hover, setHover] = useState<boolean>(false);
   const [added, setAdded] = useState<boolean>(false);
   const { mutate } = useFavoriteMovies();
+  const { data } = useSwr("/api/currentUser", fetcher);
+  let user = data?.msg
+  const isMovieInList = useMemo(() => {
+    let list = user.favoriteIds;
+    return list?.includes(id);
+  }, [id]);
+  const addHandler = useCallback(() => {
+    
+  }, [isMovieInList,user]);
 
-  useEffect(() => {
-    async function fetcher() {
-      if (added) {
-        try {
-          await axios.post("http://localhost:3000/api/modifyFavorites", {
-            movieId: id,
-          });
-          mutate();
-        } catch (error) {
-          console.log(error);
-        }
-      } else {
-        try {
-          await axios.delete(
-            `http://localhost:3000/api/modifyFavorites?movieId=${id}`
-          );
-          mutate();
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    }
-    fetcher();
-  }, [added]);
-  console.log(added);
-  const addHandler = useCallback(async function addHandler(id: string) {
-    setAdded(true);
-    if (added) {
-      setAdded(false);
-    }
-  }, []);
+
 
   if (hover) {
     videoRef.current?.play();
@@ -77,7 +58,7 @@ const MovieTrailer = ({ videoUrl, img, id, myList }: MovieTrailerProp) => {
           <button className={styles.btn}>
             <BsFillPlayCircleFill size={40} />
           </button>
-          <button className={styles.btn} onClick={() => addHandler(id)}>
+          <button className={styles.btn} onClick={addHandler}>
             {added ? (
               <TiTickOutline style={{ fontSize: "1.2rem" }} />
             ) : (

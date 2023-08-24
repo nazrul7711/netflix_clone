@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.scss'
 import Navbar from '@/components/Navbar'
 import RandomVideo from '@/components/RandomVideo'
-import { getSession, useSession } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
 import { GetServerSidePropsContext } from 'next'
 import PopularMovies from '@/components/PopularMovies'
 import MyList from '@/components/MyList'
@@ -38,21 +38,16 @@ export default  function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <Navbar />
-        <RandomVideo/>
-        <PopularMovies/>
-        <MyList/>
-
-
-
+        <RandomVideo />
+        <PopularMovies />
+        <MyList />
+        
       </main>
     </>
   );
 }
 
-//install prisma in vs code
-//npm install -D prisma
-//npx prisma init scheme fil ?
-//npm install @prisma/client
+
 //lib >prismadb.ts
 //npm install next-auth and bcrypt and @types/bcrypt
 //then we export default NextAuth({providers:[Credentials({id:,name:,credentials:{email:{}}})]}) 

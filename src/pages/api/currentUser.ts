@@ -7,8 +7,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     res.status(401).json({ msg: "invalid request" });
   }
   try {
-    let user = await serverAuth(req, res);
-    res.status(200).json({ msg: user });
+    let {user} = await serverAuth(req, res);
+    res.status(200).json({msg:user} );
   } catch (error: any) {
     console.log(error.message);
     res.status(500).json({ msg: "sth went wrong" });

@@ -4,7 +4,7 @@
   position: fixed;
   width: 100%;
   z-index: 1;
-  color:$white-color ;
+  color: $white-color;
 
   @mixin applyMediaQuery($size) {
     @media (max-width: $size) {
@@ -59,3 +59,46 @@
     }
   }
 }
+.dropdown {
+  position: relative;
+  .dropdownMenu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 300px;
+    min-height: 100px;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 3px;
+    gap: 5px;
+    animation: dp 1s ease-in;
+    box-shadow: 1px 1px 5px rgb(255, 255, 255,.5);
+    button {
+      flex: 1;
+      width: 100%;
+      cursor: pointer;
+      background-color:transparent;
+      color: white;
+      border: 1px solid white;
+      border-radius: 2px;
+      outline: none;
+      font-size:15px ;
+      padding:4px ;
+    }
+
+  }
+}
+@keyframes dp {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+// .dropdown relative
+// .dropdown-menu absolute left 0 top calc(100%+.25rem) opacity to 0

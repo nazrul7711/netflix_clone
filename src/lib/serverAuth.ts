@@ -17,6 +17,6 @@ const serverAuth = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!user) {
     throw new Error("No such user");
   }
-  return user;
+  return {user};
 };
 export default serverAuth;

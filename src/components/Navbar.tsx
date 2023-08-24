@@ -15,14 +15,15 @@ const Navbar = () => {
     setShow((w) => !w);
   }
 
+  const [dropdown, setDropdown] = useState(false);
+
   useEffect(() => {
     window.addEventListener("resize", screenWidth);
     return () => window.removeEventListener("resize", screenWidth);
   }, []);
   async function dropdownHandler() {
-    await signOut({ callbackUrl: "/auth" });
+    await signOut({callbackUrl:"/auth"});
   }
-
   return (
     <div className={`${styles.navbar} ${styles.styleFromParent}`}>
       <div className={styles.leftNavbar}>
@@ -48,6 +49,7 @@ const Navbar = () => {
           <NavItem title="Browse By Languages" />
         </div>
       </div>
+
       <div className={styles.profileTab}>
         <div>
           <AiOutlineSearch size={30} />
@@ -55,13 +57,30 @@ const Navbar = () => {
         <div>
           <AiOutlineBell size={30} />
         </div>
-        <div onClick={dropdownHandler}>
-          <Image
-            src={"/images/download.png"}
-            alt={"profile"}
-            height={50}
-            width={50}
-          />
+        <div className={`${styles.dropdown} ${dropdown ? styles.active : ""}`}>
+          <div
+            onMouseEnter={() => setDropdown(true)}
+            onMouseLeave={() => setDropdown(false)}
+            className={styles.profileImage}
+          >
+            <Image
+              src={"/images/download.png"}
+              alt={"profile"}
+              height={50}
+              width={50}
+            />
+          </div>
+          {dropdown && (
+            <div
+              className={styles.dropdownMenu}
+              onMouseEnter={() => setDropdown(true)}
+              onMouseLeave={() => setDropdown(false)}
+            >
+              <a href="#">Account</a>
+              <a href="#">Profile </a>
+              <button onClick={dropdownHandler}>Sign out of Netflix </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -69,3 +88,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+//dropdown dropdownMenu data-dropdown
+//information button data dropdown button

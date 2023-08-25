@@ -8,9 +8,9 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     let { movieId } = req.body;
-    let user = await serverAuth(req, res);
+    let {user} = await serverAuth(req, res);
     if (!user) {
-      return res.status(403).json({ msg: "user is not logged in" });
+      throw new Error("Error fetching user")
     }
     let movie = await prismadb.movie.findUnique({
       where: {
@@ -44,7 +44,8 @@ export default async function handler(
     return res.status(200).json({ msg: updatedUser });
   } else if (req.method === "DELETE") {
     let { movieId } = req.query;
-    let user = await serverAuth(req, res);
+    let {user} = await serverAuth(req, res);
+
     if (!user) {
       return res.status(403).json({ msg: "user is not logged in" });
     }

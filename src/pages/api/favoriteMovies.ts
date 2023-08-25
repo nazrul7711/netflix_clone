@@ -6,7 +6,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  let user = await serverAuth(req, res);
+  let response = await serverAuth(req, res);
+  let user = response.user
   if (!user) {
     return res.status(403).json({ msg: "user is not logged in" });
   }
@@ -15,7 +16,8 @@ export default async function handler(
       id:{
         in:user.favoriteIds
       }
-    }
+    },
   })
-  return res.status(200).json({ msg: movies});
+
+  return res.status(200).json(movies);
 }

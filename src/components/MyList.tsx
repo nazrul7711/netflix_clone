@@ -6,12 +6,12 @@ import styles from "@/styles/favorite.module.scss"
 
 const MyList = () => {
   let {data,error,isLoading} = useFavoriteMovies()
-
+  // console.log(data,"this is kill bill")
   return (
     <div className={styles.wrap}>
       <div className={styles.popular}>My List</div>
       <ul className={styles.movieList}>
-        {data?.msg.map((movie: MovieType) => (
+        {data?.map((movie: MovieType) => (
           <li key={movie.id}>
             <MovieTrailer
               videoUrl={movie.videoUrl}

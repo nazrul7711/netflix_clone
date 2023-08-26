@@ -1,4 +1,10 @@
 @import "variables";
+.onAnimate {
+  background-color: black;
+}
+.logo {
+  cursor: pointer;
+}
 .navbar {
   height: 5rem;
   position: fixed;
@@ -26,6 +32,7 @@
     display: flex;
     justify-content: space-around;
     line-height: 2rem;
+    cursor: pointer;
   }
   .profileTab {
     display: flex;
@@ -75,30 +82,26 @@
     border-radius: 3px;
     gap: 5px;
     animation: dp 1s ease-in;
-    box-shadow: 1px 1px 5px rgb(255, 255, 255,.5);
+    box-shadow: 1px 1px 5px rgb(255, 255, 255, 0.5);
     button {
       flex: 1;
       width: 100%;
       cursor: pointer;
-      background-color:transparent;
+      background-color: transparent;
       color: white;
       border: 1px solid white;
       border-radius: 2px;
       outline: none;
-      font-size:15px ;
-      padding:4px ;
+      font-size: 15px;
+      padding: 4px;
     }
-
   }
 }
 @keyframes dp {
-  from{
+  from {
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
-
-// .dropdown relative
-// .dropdown-menu absolute left 0 top calc(100%+.25rem) opacity to 0

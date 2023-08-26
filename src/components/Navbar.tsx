@@ -4,10 +4,16 @@ import styles from "@/styles/navbar.module.scss";
 import NavItem from "./NavItem";
 import { AiOutlineSearch, AiOutlineBell, AiOutlineDown } from "react-icons/Ai";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
-const Navbar = () => {
+type NavbarProps={
+  bool:boolean
+}
+
+const Navbar = ({bool}:NavbarProps) => {
   const [width, setWidth] = useState<number>(1440);
   const [show, setShow] = useState<boolean>(false);
+  const router = useRouter()
   function screenWidth() {
     setWidth(window.innerWidth);
   }
@@ -22,12 +28,14 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", screenWidth);
   }, []);
   async function dropdownHandler() {
-    await signOut({callbackUrl:"/auth"});
+    await signOut({ callbackUrl: "/auth" });
   }
+
+
   return (
-    <div className={`${styles.navbar} ${styles.styleFromParent}`}>
+    <div className={`${styles.navbar} ${bool? styles.onAnimate:""}`}>
       <div className={styles.leftNavbar}>
-        <div className={styles.logo}>
+        <div className={styles.logo} >
           <Image
             src={"/images/Netflix-Logo.png"}
             alt={"netflix-logo"}

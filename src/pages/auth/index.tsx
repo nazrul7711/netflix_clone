@@ -40,7 +40,7 @@ const index = () => {
       callbackUrl: "/", //this means to redirect user to a link where he want to go
     });
     if (res?.ok) {
-      router.push("/");
+      router.push("/profile");
     } else {
       setError(res?.error!);
     }
@@ -100,14 +100,14 @@ const index = () => {
             <div className={styles.gitButtons}>
               <div
                 className={styles.gitButton}
-                onClick={() => signIn("google", { callbackUrl: "/" })}
+                onClick={() => signIn("google", { callbackUrl: "/profile" })}
               >
                 <FcGoogle />
               </div>
 
               <div
                 className={styles.gitButton}
-                onClick={() => signIn("github", { callbackUrl: "/" })}
+                onClick={() => signIn("github", { callbackUrl: "/profile" })}
               >
                 <FaGithub />
               </div>

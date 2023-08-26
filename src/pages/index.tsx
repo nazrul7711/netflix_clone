@@ -3,31 +3,31 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.scss'
 import Navbar from '@/components/Navbar'
 import RandomVideo from '@/components/RandomVideo'
-import { getSession } from 'next-auth/react'
-import { GetServerSidePropsContext } from 'next'
 import PopularMovies from '@/components/PopularMovies'
 import MyList from '@/components/MyList'
+import { useEffect, useState } from 'react'
+import MovieModal from '@/components/MovieModal'
 
 const inter = Inter({ subsets: ['latin'] })
-export  async function getServerSideProps(context:GetServerSidePropsContext) {
-  let a = await getSession();
-  console.log(a);
-  return{
-    props:{
 
-    }
-  }
-}
-async function hello(){
-  let a = await getSession();
-    console.log(a)
-}
+
 
 export default  function Home() {
 
+  const [backgroundColor,setBackgroundColor]=useState<boolean>(false)
+  useEffect(()=>{
+    function scrollFunction(){
+      if(window.scrollY > 20){
+        setBackgroundColor(true)
+      }else{
+        setBackgroundColor(false)
+      }
+    }
+    document.addEventListener("scroll",scrollFunction)
+    return ()=>document.removeEventListener("scroll",scrollFunction)
+  },[])
+  const [showModal, setShowModal] = useState<boolean>(false);
   
-  
-
   return (
     <>
       <Head>
@@ -37,10 +37,11 @@ export default  function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <Navbar />
-        <RandomVideo />
+        <Navbar bool={backgroundColor}/>
+        <RandomVideo setModal={setShowModal}/>
         <PopularMovies />
         <MyList />
+        {showModal && <MovieModal setModal={setShowModal}/>}
         
       </main>
     </>

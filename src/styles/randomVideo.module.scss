@@ -1,50 +1,49 @@
 @import "variables";
-.wrapper{
-  min-height:60vh;
+.wrapper {
+  min-height: 60vh;
   min-width: 100vw;
   position: relative;
 }
-.video{
-  height:100%;
-  width:100%;
-
+.video {
+  height: 100%;
+  width: 100%;
 }
-.movieDetails{
-  position:absolute;
+.buttons {
+  width: 20rem;
+  display: flex;
+  gap: 2rem;
+}
+.movieDetails {
+  position: absolute;
   width: 60%;
   top: 30%;
   left: 10%;
   color: $white-color;
-  letter-spacing: .2rem;
-  .title{
+  letter-spacing: 0.2rem;
+  .title {
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 1rem;
   }
-  .description{
+  .description {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  button{
-    
-    padding: .8rem 1.2rem;
+  button {
+    padding: 0.8rem 1.2rem;
     border: none;
     outline: none;
-    border-radius: .2rem;
-    background-color: rgb(255, 255, 255,.5);
+    border-radius: 0.2rem;
+    background-color: rgb(255, 255, 255, 0.5);
     color: $white-color;
     cursor: pointer;
-    font-size: 1rem;  
+    font-size: 1rem;
     display: flex;
     justify-content: center;
 
-
-    div{
+    div {
       display: inline-block;
-      margin-right: .4rem;
-      
+      margin-right: 0.4rem;
     }
-    
-
   }
 }

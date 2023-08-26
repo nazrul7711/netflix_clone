@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { AiOutlinePlus } from "react-icons/Ai";
 import { TiTickOutline } from "react-icons/Ti";
 import { BsFillPlayCircleFill } from "react-icons/Bs";
@@ -8,6 +8,7 @@ import useFavoriteMovies from "@/hooks/useFavoriteMovies";
 import useSwr from "swr";
 import fetcher from "@/lib/fetcher";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 interface MovieTrailerProp {
   videoUrl: string;
@@ -30,32 +31,32 @@ const MovieTrailer = ({ videoUrl, img, id }: MovieTrailerProp) => {
     return <p>Error fetching the user</p>;
   }
   let user = data?.msg;
+  let router = useRouter();
 
-  let isMovie = user?.favoriteIds?.includes(id)
+  let isMovie = user?.favoriteIds?.includes(id);
 
   async function addHandler() {
-
-    console.log(isMovie)
-
     if (isMovie) {
       await axios.delete(
-        `http://localhost:3001/api/modifyFavorites?movieId=${id}`
+        `http://localhost:3000/api/modifyFavorites?movieId=${id}`
       );
       mutate();
       userMutate();
     } else {
-      await axios.post(`http://localhost:3001/api/modifyFavorites`, {
+      await axios.post(`http://localhost:3000/api/modifyFavorites`, {
         movieId: id,
       });
       mutate();
       userMutate();
     }
-    setAdded(isMovie)
-
+    setAdded(isMovie);
   }
-  let Icon = isMovie ? TiTickOutline : AiOutlinePlus
+  let Icon = isMovie ? TiTickOutline : AiOutlinePlus;
   if (hover) {
     videoRef.current?.play();
+  }
+  function playMovieHandler() {
+    router.push(id);
   }
 
   return (
@@ -76,10 +77,10 @@ const MovieTrailer = ({ videoUrl, img, id }: MovieTrailerProp) => {
         )}
       </div>
       <div className={styles.buttons}>
-        <button className={styles.btn}>
+        <button className={styles.btn} onClick={playMovieHandler}>
           <BsFillPlayCircleFill size={40} />
         </button>
-        <button className={styles.btn} onClick={addHandler}>          
+        <button className={styles.btn} onClick={addHandler}>
           <Icon style={{ fontSize: "1.2rem" }} />
         </button>
       </div>

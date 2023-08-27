@@ -37,13 +37,15 @@ const MovieTrailer = ({ videoUrl, img, id }: MovieTrailerProp) => {
   async function addHandler() {
     if (isMovie) {
       await axios.delete(
-        `netflix-clone-h3hc.vercel.app/api/modifyFavorites?movieId=${id}`
+        `netflix-clone-h3hc-b7fbtxqmo-nazrul7711.vercel.app
+/api/modifyFavorites?movieId=${id}`
       );
       mutate();
       userMutate();
     } else {
       await axios.post(
-        `netflix-clone-h3hc.vercel.app/api/modifyFavorites`,
+        `netflix-clone-h3hc-b7fbtxqmo-nazrul7711.vercel.app
+/api/modifyFavorites`,
         {
           movieId: id,
         }

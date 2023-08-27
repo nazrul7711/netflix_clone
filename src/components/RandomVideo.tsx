@@ -64,3 +64,4 @@ const RandomVideo = ({ setModal,setMovie }: RandomVideoProps) => {
 };
 
 export default RandomVideo;
+

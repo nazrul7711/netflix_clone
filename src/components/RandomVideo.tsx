@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "@/styles/randomVideo.module.scss";
 import useRandomMovie from "@/hooks/useRandomMovie";
 import { AiOutlineInfoCircle } from "react-icons/Ai";
 import { BsPlay } from "react-icons/Bs";
 import { useRouter } from "next/router";
+import { MovieType } from "../../global";
 
 type RandomVideoProps = {
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setMovie:  React.Dispatch<React.SetStateAction<MovieType|undefined>>
 };
 
-const RandomVideo = ({ setModal }: RandomVideoProps) => {
+const RandomVideo = ({ setModal,setMovie }: RandomVideoProps) => {
   let { data, error, isLoading } = useRandomMovie();
 
   let router = useRouter();
@@ -24,7 +26,8 @@ const RandomVideo = ({ setModal }: RandomVideoProps) => {
     router.push(`/${data?.msg[0]?.id}`);
   }
   function informationHandler() {
-    setModal((e) => !e);
+    setModal(true);
+    setMovie(data?.msg[0]);
   }
   return (
     <div className={styles.wrapper}>

@@ -7,6 +7,7 @@ import PopularMovies from '@/components/PopularMovies'
 import MyList from '@/components/MyList'
 import { useEffect, useState } from 'react'
 import MovieModal from '@/components/MovieModal'
+import { MovieType } from '../../global'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,6 +16,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default  function Home() {
 
   const [backgroundColor,setBackgroundColor]=useState<boolean>(false)
+  const [movie,setMovie]=useState<MovieType|undefined>()
   useEffect(()=>{
     function scrollFunction(){
       if(window.scrollY > 20){
@@ -27,6 +29,7 @@ export default  function Home() {
     return ()=>document.removeEventListener("scroll",scrollFunction)
   },[])
   const [showModal, setShowModal] = useState<boolean>(false);
+
   
   return (
     <>
@@ -38,10 +41,10 @@ export default  function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <Navbar bool={backgroundColor}/>
-        <RandomVideo setModal={setShowModal}/>
+        <RandomVideo setModal={setShowModal} setMovie={setMovie}/>
         <PopularMovies />
         <MyList />
-        {showModal && <MovieModal setModal={setShowModal}/>}
+        {showModal && <MovieModal setModal={setShowModal} movie={movie}/>}
         
       </main>
     </>

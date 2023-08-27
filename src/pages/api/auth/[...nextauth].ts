@@ -63,18 +63,3 @@ export const nextAuthO: NextAuthOptions = {
 export default NextAuth(nextAuthO);
 
 
-/*
-NEXTAUTH_URL PROD
-NEXTAUTH_SECRET encrypt JWT
-secret: encrypt cookies generate cruptic keys yes in production a string value  PROD
-session:OPTIONAL to strategy :"jwt"
-jwt:OPTIONAL to define seperate configuration for jwt
-pages:{signIn:"/auth"}
-in req:callback-url,session-token,csrftoken
-getToken({req})
-
-import CredentialsProvider from "next-auth/provider/credentials"
-CredentaislProvider({name:"name to be provided in sign in form",credentails:{name:{label:,type},email:{ }}})
-
-
-*/

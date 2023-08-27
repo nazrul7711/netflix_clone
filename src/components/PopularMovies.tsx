@@ -1,17 +1,16 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "@/styles/popularMovies.module.scss";
 import MovieTrailer from "./MovieTrailer";
 import usePopularMovies from "@/hooks/usePopularMovies";
 import { MovieType } from "../../global";
 
 const PopularMovies = () => {
-  const { data, error} = usePopularMovies();
-
-
-
-
+  const { data, error,isLoading} = usePopularMovies();
   if (error) {
     return <div>Error Fetching Movies</div>;
+  }
+  if(isLoading){
+    return <p>Loading...</p>
   }
 
   return (

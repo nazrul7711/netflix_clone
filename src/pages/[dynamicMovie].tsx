@@ -17,7 +17,7 @@ export async function getServerSideProps(context: NextPageContext) {
   };
 }
 
-const index = ({ videoUrl }: { videoUrl: string }) => {
+const Index = ({ videoUrl }: { videoUrl: string }) => {
   let router = useRouter();
   function takeBackHandler() {
     router.push("/");
@@ -32,4 +32,4 @@ const index = ({ videoUrl }: { videoUrl: string }) => {
   );
 };
 
-export default index;
+export default Index;

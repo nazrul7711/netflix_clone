@@ -14,10 +14,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       skip:randomNumber,
       take:1
     })
-    res.status(200).json({msg:randomMovie})
+     return res.status(200).json({msg:randomMovie})
 
   } catch (error: any) {
     console.log(error.message);
-    res.status(500).json({ msg: "something went wrong" });
+    return res.status(500).json({ msg: "something went wrong" });
   }
 }

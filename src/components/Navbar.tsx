@@ -4,7 +4,7 @@ import styles from "@/styles/navbar.module.scss";
 import NavItem from "./NavItem";
 import { AiOutlineSearch, AiOutlineBell, AiOutlineDown } from "react-icons/Ai";
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/router";
+
 
 type NavbarProps={
   bool:boolean
@@ -13,7 +13,6 @@ type NavbarProps={
 const Navbar = ({bool}:NavbarProps) => {
   const [width, setWidth] = useState<number>(1440);
   const [show, setShow] = useState<boolean>(false);
-  const router = useRouter()
   function screenWidth() {
     setWidth(window.innerWidth);
   }
@@ -97,5 +96,4 @@ const Navbar = ({bool}:NavbarProps) => {
 
 export default Navbar;
 
-//dropdown dropdownMenu data-dropdown
-//information button data dropdown button
+

@@ -14,6 +14,6 @@ export default function App({ Component, pageProps:{session,...pageProps} }: App
       <div className={roboto.className}>
         <Component {...pageProps} />
       </div>
-    // </SessionProvider>
+    </SessionProvider>
   );
 }

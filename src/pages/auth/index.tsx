@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
-const index = () => {
+const Index = () => {
   const [signUp, setSignUp] = useState<boolean>(true);
   const [name, setName] = useState<string>();
   const [email, setEmail] = useState<string>();
@@ -46,12 +46,6 @@ const index = () => {
     }
   };
 
-  /*signIn client-side yes
-  if only signIn() will be redirected to signIn page if u want to go to google sign in page use signIn("google") 
-  callbackUrl:which url user will be redirected to after sign in
-  redirect :false means in case of error user will stay here
-  signIn() will then resolve to a object { error:string or undefined,status : code like 200,ok boolean,url null or url}
-  */
 
   return (
     <div className={styles.wrapper}>
@@ -126,4 +120,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

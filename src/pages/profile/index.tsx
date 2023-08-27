@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-const index = () => {
+const Index = () => {
   let session = useSession();
   let user = session.data?.user;
   let router = useRouter();
@@ -27,4 +27,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

@@ -1,4 +1,3 @@
-import React from 'react'
 import useFavoriteMovies from '@/hooks/useFavoriteMovies'
 import MovieTrailer from './MovieTrailer'
 import { MovieType } from '../../global'
@@ -6,7 +5,13 @@ import styles from "@/styles/favorite.module.scss"
 
 const MyList = () => {
   let {data,error,isLoading} = useFavoriteMovies()
-  // console.log(data,"this is kill bill")
+  if(error){
+    return <p>Error fetching movies</p>
+  }
+  if(isLoading){
+    return <p>Loading ....</p>
+  }
+
   return (
     <div className={styles.wrap}>
       <div className={styles.popular}>My List</div>

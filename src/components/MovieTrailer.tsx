@@ -22,6 +22,7 @@ const MovieTrailer = ({ videoUrl, img, id }: MovieTrailerProp) => {
   const [hover, setHover] = useState<boolean>(false);
   const [added, setAdded] = useState<boolean>(false);
   const { mutate } = useFavoriteMovies();
+  let router = useRouter();
   const {
     data,
     error,
@@ -31,8 +32,6 @@ const MovieTrailer = ({ videoUrl, img, id }: MovieTrailerProp) => {
     return <p>Error fetching the user</p>;
   }
   let user = data?.msg;
-  let router = useRouter();
-
   let isMovie = user?.favoriteIds?.includes(id);
 
   async function addHandler() {

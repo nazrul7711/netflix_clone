@@ -1,5 +1,5 @@
 import styles from "@/styles/movieModal.module.scss";
-import { AiFillCloseCircle } from "react-icons/Ai";
+import { AiFillCloseCircle } from "react-icons/ai";
 import { MovieType } from "../../global";
 
 type MovieModalProps = {

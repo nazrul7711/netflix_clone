@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/navbar.module.scss";
 import NavItem from "./NavItem";
-import { AiOutlineSearch, AiOutlineBell, AiOutlineDown } from "react-icons/Ai";
+import { AiOutlineSearch, AiOutlineBell, AiOutlineDown } from "react-icons/ai";
 import { signOut } from "next-auth/react";
 
 

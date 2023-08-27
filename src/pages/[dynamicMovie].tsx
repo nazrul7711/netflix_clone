@@ -2,7 +2,7 @@ import styles from "@/styles/fullMovieTrailer.module.scss";
 import axios from "axios";
 import { NextPageContext } from "next";
 import { useRouter } from "next/router";
-import { AiOutlineArrowLeft } from "react-icons/Ai";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 export async function getServerSideProps(context: NextPageContext) {
   let movieId = context.query.dynamicMovie;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AiOutlinePlus } from "react-icons/Ai";
+import { AiOutlinePlus } from "react-icons/ai";
 import { TiTickOutline } from "react-icons/Ti";
 import { BsFillPlayCircleFill } from "react-icons/Bs";
 import styles from "@/styles/movieTrailer.module.scss";

@@ -1,0 +1,22 @@
+.wrapper {
+  display: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.wrapper video {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper .arrow {
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  position: absolute;
+  top: 4%;
+  left: 2%;
+}
+.wrapper .arrow * {
+  color: white;
+}/*# sourceMappingURL=fullMovieTrailer.module.css.map */

@@ -1,0 +1,103 @@
+.onAnimate {
+  background-color: black;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.navbar {
+  height: 5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+.navbar .leftNavbar {
+  display: flex;
+  align-items: center;
+  min-width: 60%;
+  justify-content: space-around;
+}
+.navbar .navItems {
+  min-width: 40rem;
+  display: flex;
+  justify-content: space-around;
+  line-height: 2rem;
+  cursor: pointer;
+}
+.navbar .profileTab {
+  display: flex;
+  min-width: 15rem;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .navbar .navbar {
+    position: relative;
+  }
+  .navbar .profileTab {
+    display: none;
+  }
+  .navbar .leftNavbar {
+    display: flex;
+    min-width: 20rem;
+    justify-content: space-between;
+  }
+  .navbar .navItems {
+    position: absolute;
+    left: 25%;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar .navItems.hidden {
+    display: none;
+  }
+}
+
+.dropdown {
+  position: relative;
+}
+.dropdown .dropdownMenu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 300px;
+  min-height: 100px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 3px;
+  gap: 5px;
+  animation: dp 1s ease-in;
+  box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.5);
+}
+.dropdown .dropdownMenu button {
+  flex: 1;
+  width: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 2px;
+  outline: none;
+  font-size: 15px;
+  padding: 4px;
+}
+
+@keyframes dp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=navbar.module.css.map */

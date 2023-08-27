@@ -1,0 +1,11 @@
+.main {
+  height: auto;
+  width: 100%;
+  position: relative;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 15;
+}/*# sourceMappingURL=Home.module.css.map */

@@ -1,0 +1,52 @@
+.wrapper {
+  flex: 0 0 200px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  height: 11rem;
+  width: 11rem;
+  background-color: black;
+  transition: all 0.5s;
+}
+.wrapper .image {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wrapper .video {
+  height: 100%;
+}
+.wrapper .video video {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wrapper .buttons {
+  display: none;
+}
+.wrapper:hover {
+  transform: scale(1.4);
+  z-index: 2;
+}
+.wrapper:hover .video {
+  height: 70%;
+}
+.wrapper:hover .buttons {
+  display: flex;
+  height: 30%;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  padding: 0rem 0.5rem;
+}
+.wrapper:hover .buttons .btn {
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}/*# sourceMappingURL=movieTrailer.module.css.map */

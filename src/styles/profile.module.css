@@ -1,0 +1,10 @@
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  color: white;
+}
+.wrapper .imageHolder {
+  cursor: pointer;
+}/*# sourceMappingURL=profile.module.css.map */

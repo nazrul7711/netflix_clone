@@ -19,12 +19,12 @@ const Index = () => {
   const registerHandler = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("/api/register", {
+      let res = await axios.post("/api/register", {
         email,
         name,
         password,
       });
-      loginHandler(e);
+      console.log(res)
     } catch (error: any) {
       console.log(error);
       setError(error.response.data.msg);

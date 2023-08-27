@@ -8,7 +8,7 @@ export async function getServerSideProps(context: NextPageContext) {
   let movieId = context.query.dynamicMovie;
 
   let movieUrl = await axios.get(
-    `netflix-clone-h3hc-b7fbtxqmo-nazrul7711.vercel.app/api/getMovie?movieId=${movieId}`
+    `http://localhost:3000/api/getMovie?movieId=${movieId}`
   );
   return {
     props: {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { TiTickOutline } from "react-icons/Ti";
-import { BsFillPlayCircleFill } from "react-icons/Bs";
+import { TiTickOutline } from "react-icons/ti";
+import { BsFillPlayCircleFill } from "react-icons/bs";
 import styles from "@/styles/movieTrailer.module.scss";
 import { useRef } from "react";
 import useFavoriteMovies from "@/hooks/useFavoriteMovies";

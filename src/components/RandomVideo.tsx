@@ -2,7 +2,7 @@ import React from "react";
 import styles from "@/styles/randomVideo.module.scss";
 import useRandomMovie from "@/hooks/useRandomMovie";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import { BsPlay } from "react-icons/Bs";
+import { BsPlay } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { MovieType } from "../../global";
 

@@ -37,7 +37,7 @@ const Index = () => {
       email,
       password,
       redirect: false, //if true on sign in fail it will take me to /auth page mentioned in sign in . if false it will not take u anywhere if sign in is successfull
-      callbackUrl: "/", //this means to redirect user to a link where he want to go
+
     });
     if (res?.ok) {
       router.push("/profile");
